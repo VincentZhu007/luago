@@ -90,4 +90,38 @@ upvalues (1):
 
 ## 第3章、指令集
 
+Lua虚拟机：
+
+- 基于寄存器
+- 定长指令集，单条指令占4个字节
+
+Lua指令集编码模式：
+- iABC
+- iABx
+- iAxBx
+- iAx
+
+编译执行：
+```bash
+$ cd ch03
+$ export GOPATH="${PATH}/"          # 指定ch03目录为go工作目录
+$ go install luago                  # 编译luago二进制
+$ ./bin/luago ../ch01/hello.out
+
+main <@hello.lua:0,0> (4 instructions)
+0+ params, 2 slots, 1 upvalues, 0 locals, 2 constants, 0 functions
+        1       [2]     GETTABUP        0 0 -1
+        2       [2]     LOADK           1 -2
+        3       [2]     CALL            0 2 1
+        4       [2]     RETURN          0 1
+constants (2):
+        1       "print"
+        2       "hello, lua!"
+locals (0):
+upvalues (1):
+        0       %!d(string=_ENV)        1       0
+```
+
+## 第4章、Lua API
+
 
